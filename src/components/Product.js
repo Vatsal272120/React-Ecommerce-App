@@ -4,6 +4,8 @@ import {
   ShoppingCartOutlined,
 } from '@material-ui/icons';
 import styled from 'styled-components';
+import { useHistory } from 'react-router';
+import { useParams } from 'react-router-dom';
 
 const Info = styled.div`
   opacity: 0;
@@ -66,8 +68,18 @@ const Icon = styled.div`
 `;
 
 const Product = ({ item }) => {
+  let history = useHistory();
+  const { id } = useParams();
+
+  const redirectToProduct = (info) => {
+    console.log('done');
+    history.push(`/prod/:${item.id}`);
+  };
+
+  console.log(id);
+
   return (
-    <Container>
+    <Container onClick={redirectToProduct}>
       <Circle />
       <Image src={item.img} />
       <Info>

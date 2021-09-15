@@ -71,9 +71,11 @@ const MenuItem = styled.div`
 
 const Navbar = () => {
   let history = useHistory();
+
+  // redirecting fns
   const redirectToLogin = () => {
     console.log('user will be redirected to login page');
-    history.push('/register');
+    history.push('/login');
   };
 
   const redirectToCart = () => {

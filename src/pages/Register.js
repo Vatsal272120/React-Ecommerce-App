@@ -57,7 +57,7 @@ const Register = () => {
   return (
     <Container>
       <Wrapper>
-        <Title>Create your V. store account</Title>
+        <Title>Register</Title>
         <Form>
           <Input placeholder='name' />
           <Input placeholder='last name' />

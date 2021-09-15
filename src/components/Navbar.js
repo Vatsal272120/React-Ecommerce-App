@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { Badge } from '@material-ui/core';
 import { Search, ShoppingCartOutlined } from '@material-ui/icons';
+import PersonIcon from '@material-ui/icons/Person';
 import { mobile } from '../responsive';
+import { useHistory } from 'react-router-dom';
 
 const Container = styled.div`
   height: 60px;
@@ -68,12 +70,23 @@ const MenuItem = styled.div`
 `;
 
 const Navbar = () => {
+  let history = useHistory();
+  const redirectToLogin = () => {
+    console.log('user will be redirected to login page');
+    history.push('/register');
+  };
+
+  const redirectToCart = () => {
+    console.log('user will be redirected to Cart');
+    history.push('/cart');
+  };
+
   return (
     <Container>
       <Wrapper>
         <Left>
           <SearchContainer>
-            <Input></Input>
+            <Input />
           </SearchContainer>
         </Left>
         <Center>
@@ -82,10 +95,12 @@ const Navbar = () => {
         </Center>
         <Right>
           {/* menu items  */}
-          <MenuItem>Register</MenuItem>
-          <MenuItem>SignIn</MenuItem>
           <MenuItem>
-            <Badge badgeContent={4} color='primary'>
+            {' '}
+            <PersonIcon onClick={redirectToLogin} />{' '}
+          </MenuItem>
+          <MenuItem>
+            <Badge badgeContent={4} color='primary' onClick={redirectToCart}>
               <ShoppingCartOutlined />
             </Badge>
           </MenuItem>
